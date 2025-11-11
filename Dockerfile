@@ -1,3 +1,10 @@
 # Dockerfile
-FROM alpine:3.19
-CMD ["echo", "Hello from Cloud Build!"]
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY . .
+
+EXPOSE 8080
+CMD ["sh", "-c", "python -m http.server ${PORT:-8080}"]
